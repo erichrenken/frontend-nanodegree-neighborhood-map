@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Create menu for the restaurant list -->
+        <div class="container">
+            <div class="options-box">
+                <h1>Restaurants in Decatur, GA</h1>
+                <input type="search" placeholder="Search..." data-bind="textInput: userInput, valueUpdate: 'keyup'" autocomplete="off">
+                <ul data-bind="foreach: availableLocations()">
+                    <li>
+                        <div>
+                            <a href="#" data-bind="click: openInfoWindow"><span data-bind="text: name"> </span></a>
+                        </div>
+
+                    </li>
+                </ul>
+            <div class="attribution">
+                Location information provided by:
+                <ul>
+                    <li>Google Maps</li>
+                    <li>Foursquare</li>
+                </ul>
+            </div>
+
+            </div>
+            <!-- Placeholder for the Google Map to be loaded asynchronously -->
+            <div id="map"></div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+        <script src="js/vendor/knockout-3.4.0.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMHHsS4GpWXjCoW2Ul87MdqifFHnIYJUw&v=3&callback=initMap"></script>
+    </body>
+</html>
