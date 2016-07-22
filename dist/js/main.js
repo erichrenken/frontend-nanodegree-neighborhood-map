@@ -1,6 +1,21 @@
-var map;
 var markers = [];
 var infoWin;
+var menu = document.querySelector('#menu');
+var map = document.querySelector('#map');
+var optionsBox = document.querySelector('#options-box');
+
+menu.addEventListener('click', function(e) {
+    optionsBox.classList.toggle('open');
+    e.stopPropagation();
+});
+map.addEventListener('click', function() {
+    optionsBox.classList.remove('open');
+});
+
+// This function will alert the user if there's been a problem loading the Google Map
+function googleError(){
+    alert("The Google Map failed to load properly.");
+}
 
 function initMap() {
     // Create a map and center it in downtown Decatur
@@ -50,6 +65,7 @@ function populateInfoWindow(marker, infowindow, index) {
         infowindow.marker = marker;
         // Make sure the marker property is cleared if the infowindow is closed.
         infowindow.addListener('closeclick', function() {
+            infowindow.marker.setAnimation(null);
             infowindow.marker = null;
         });
         // Open the infowindow on the correct markers
@@ -74,6 +90,7 @@ var Listing = function(name, address, foursquareId){
     self.phone = "";
     // This code ensures that the markers array and the observableArray stay synchronized
     self.openInfoWindow = function(listing){
+        optionsBox.classList.remove('open');
         var index = markers.findIndex(x => x.title == listing.name);
         google.maps.event.trigger(markers[index], 'click');
     }
